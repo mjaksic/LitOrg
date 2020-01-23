@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
+
 
 namespace LitOrg
 {
     public partial class Form1 : Form
     {
         private string author, title, isbn, yearOi, publisher, binding, nmbrOfPgs;
-
         private SqlCeCommand _command;
         private SqlCeConnection _connection;
         private SqlCeDataAdapter _adapter;
-        private string _connectionString = @"Data Source=C:\Users\Matej\source\repos\LitOrg\dbLitOrg.sdf";
+        private string _connectionString = @"Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "dbLitOrg.sdf";
 
         public Form1()
         {
