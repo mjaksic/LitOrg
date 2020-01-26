@@ -13,8 +13,8 @@ namespace LitOrg
         private SqlCeCommand _command;
         private SqlCeConnection _connection;
         private SqlCeDataAdapter _adapter;
-        private string _connectionString = @"Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "dbLitOrg.sdf";
-        //private string _connectionString = @"Data Source=C:\Users\Matej\source\repos\LitOrg\dbLitOrg.sdf";
+        //private string _connectionString = @"Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "dbLitOrg.sdf";
+        private string _connectionString = @"Data Source=C:\Users\Matej\source\repos\LitOrg\dbLitOrg.sdf";
         public Form1()
         {
             InitializeComponent();
@@ -116,7 +116,7 @@ namespace LitOrg
         }
         private void UpdateTable()
         {
-            _adapter = new SqlCeDataAdapter("SELECT * FROM books", _connection);
+            _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books;", _connection);
             DataTable table = new DataTable();
             _adapter.Fill(table);
             dataGridView.DataSource = table;
@@ -141,7 +141,7 @@ namespace LitOrg
         {
             if (author.Length > 0)
             {
-                _adapter = new SqlCeDataAdapter("SELECT * FROM books WHERE author='" + author + "'", _connection);
+                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books WHERE author='" + author + "'", _connection);
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
@@ -149,7 +149,7 @@ namespace LitOrg
             }
             else if (title.Length > 0)
             {
-                _adapter = new SqlCeDataAdapter("SELECT * FROM books WHERE title='" + title + "'", _connection);
+                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books WHERE title='" + title + "'", _connection);
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
@@ -157,7 +157,7 @@ namespace LitOrg
             }
             else if (isbn.Length > 0)
             {
-                _adapter = new SqlCeDataAdapter("SELECT * FROM books WHERE isbn='" + isbn + "'", _connection);
+                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books WHERE isbn='" + isbn + "'", _connection);
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
@@ -165,7 +165,7 @@ namespace LitOrg
             }
             else if (yearOi.Length > 0)
             {
-                _adapter = new SqlCeDataAdapter("SELECT * FROM books WHERE year='" + yearOi + "'", _connection);
+                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books WHERE year='" + yearOi + "'", _connection);
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
@@ -173,7 +173,7 @@ namespace LitOrg
             }
             else if (publisher.Length > 0)
             {
-                _adapter = new SqlCeDataAdapter("SELECT * FROM books WHERE publisher='" + publisher + "'", _connection);
+                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books WHERE publisher='" + publisher + "'", _connection);
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
@@ -181,7 +181,7 @@ namespace LitOrg
             }
             else if (binding.Length > 0)
             {
-                _adapter = new SqlCeDataAdapter("SELECT * FROM books WHERE binding='" + binding + "'", _connection);
+                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books WHERE binding='" + binding + "'", _connection);
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
@@ -189,7 +189,7 @@ namespace LitOrg
             }
             else if (nmbrOfPgs.Length > 0)
             {
-                _adapter = new SqlCeDataAdapter("SELECT * FROM books WHERE pagenumber='" + nmbrOfPgs + "'", _connection);
+                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books WHERE pagenumber='" + nmbrOfPgs + "'", _connection);
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
@@ -197,6 +197,7 @@ namespace LitOrg
             }
             else { UpdateTable(); }
         }
+
         private void UpdateData()
         {
             if (isbn.Length != 13)
@@ -218,7 +219,7 @@ namespace LitOrg
                 if (rbtnAsc.Checked && !rbtnDsc.Checked)
                 {
                     //filtrira uzlazno
-                    _adapter = new SqlCeDataAdapter("SELECT * FROM books ORDER BY " + selectedFilter + " ASC", _connection);
+                    _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books ORDER BY " + selectedFilter + " ASC", _connection);
                     DataTable table = new DataTable();
                     _adapter.Fill(table);
                     dataGridView.DataSource = table;
@@ -226,7 +227,7 @@ namespace LitOrg
                 else
                 {
                 //filtrira silazno
-                _adapter = new SqlCeDataAdapter("SELECT * FROM books ORDER BY " + selectedFilter + " DESC", _connection);
+                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books ORDER BY " + selectedFilter + " DESC", _connection);
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
