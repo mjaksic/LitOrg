@@ -281,6 +281,8 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
             this.dataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -325,13 +327,13 @@
             this.rbtnDsc.Name = "rbtnDsc";
             this.rbtnDsc.Size = new System.Drawing.Size(54, 21);
             this.rbtnDsc.TabIndex = 3;
-            this.rbtnDsc.TabStop = true;
             this.rbtnDsc.Text = "DSC";
             this.rbtnDsc.UseVisualStyleBackColor = true;
             // 
             // rbtnAsc
             // 
             this.rbtnAsc.AutoSize = true;
+            this.rbtnAsc.Checked = true;
             this.rbtnAsc.Location = new System.Drawing.Point(8, 32);
             this.rbtnAsc.Margin = new System.Windows.Forms.Padding(4);
             this.rbtnAsc.Name = "rbtnAsc";
@@ -353,13 +355,16 @@
             // 
             // cbFilters
             // 
+            this.cbFilters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilters.FormattingEnabled = true;
             this.cbFilters.Items.AddRange(new object[] {
             "Author",
             "Title",
             "ISBN",
             "Year of Issue",
-            "Publisher"});
+            "Publisher",
+            "Binding",
+            "Number of Pages"});
             this.cbFilters.Location = new System.Drawing.Point(4, 60);
             this.cbFilters.Margin = new System.Windows.Forms.Padding(4);
             this.cbFilters.Name = "cbFilters";
@@ -370,11 +375,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(982, 554);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
