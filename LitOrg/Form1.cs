@@ -13,8 +13,8 @@ namespace LitOrg
         private SqlCeCommand _command;
         private SqlCeConnection _connection;
         private SqlCeDataAdapter _adapter;
-        //private string _connectionString = @"Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "dbLitOrg.sdf";
-        private string _connectionString = @"Data Source=C:\Users\Matej\source\repos\LitOrg\dbLitOrg.sdf";
+        private string _connectionString = @"Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "dbLitOrg.sdf";
+        //private string _connectionString = @"Data Source=C:\Users\Matej\source\repos\LitOrg\dbLitOrg.sdf";
         public Form1()
         {
             InitializeComponent();
