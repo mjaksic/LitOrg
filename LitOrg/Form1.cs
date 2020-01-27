@@ -9,7 +9,7 @@ namespace LitOrg
     public partial class Form1 : Form
     {
         private string author, title, isbn, yearOi, publisher, binding, nmbrOfPgs;
-        private string selectedFilter;
+        private string selectedSort;
         private SqlCeCommand _command;
         private SqlCeConnection _connection;
         private SqlCeDataAdapter _adapter;
@@ -20,24 +20,24 @@ namespace LitOrg
             InitializeComponent();
             OpenConnection();
             UpdateTable();
-            cbFilters.SelectedIndex = 0;
-            selectedFilter = cbFilters.Text;
+            cbSort.SelectedIndex = 0;
+            selectedSort = cbSort.Text;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-        //FILTER
-        private void btnFilter_Click(object sender, EventArgs e)
+        //SORT
+        private void btnSort_Click(object sender, EventArgs e)
         {
-            selectedFilter = cbFilters.SelectedText;
+            selectedSort = cbSort.SelectedText;
             GetDataFromTextFields();
             TrimAll();
             FieldIsEmpty();
             FixQuery();
-            SelectedFilterFix();
-            FilterData();
+            SelectedSortFix();
+            SortData();
         }
         //DELETE
         private void btnDelete_Click(object sender, EventArgs e)
@@ -197,7 +197,6 @@ namespace LitOrg
             }
             else { UpdateTable(); }
         }
-
         private void UpdateData()
         {
             if (isbn.Length != 13)
@@ -214,12 +213,12 @@ namespace LitOrg
                 RemoveDataFromTextFields();
             }
         }
-        private void FilterData()
+        private void SortData()
         {
                 if (rbtnAsc.Checked && !rbtnDsc.Checked)
                 {
                     //filtrira uzlazno
-                    _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books ORDER BY " + selectedFilter + " ASC", _connection);
+                    _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books ORDER BY " + selectedSort + " ASC", _connection);
                     DataTable table = new DataTable();
                     _adapter.Fill(table);
                     dataGridView.DataSource = table;
@@ -227,7 +226,7 @@ namespace LitOrg
                 else
                 {
                 //filtrira silazno
-                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books ORDER BY " + selectedFilter + " DESC", _connection);
+                _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books ORDER BY " + selectedSort + " DESC", _connection);
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
@@ -249,35 +248,35 @@ namespace LitOrg
                 RemoveDataFromTextFields();
             }
         }
-        private void SelectedFilterFix()
+        private void SelectedSortFix()
         {
-            if (cbFilters.Text == "Author")
+            if (cbSort.Text == "Author")
             {
-                selectedFilter = "author";
+                selectedSort = "author";
             }
-            if (cbFilters.Text == "Title")
+            if (cbSort.Text == "Title")
             {
-                selectedFilter = "title";
+                selectedSort = "title";
             }
-            if (cbFilters.Text == "ISBN")
+            if (cbSort.Text == "ISBN")
             {
-                selectedFilter = "isbn";
+                selectedSort = "isbn";
             }
-            if (cbFilters.Text == "Year of Issue")
+            if (cbSort.Text == "Year of Issue")
             {
-                selectedFilter = "year";
+                selectedSort = "year";
             }
-            if (cbFilters.Text == "Publisher")
+            if (cbSort.Text == "Publisher")
             {
-                selectedFilter = "publisher";
+                selectedSort = "publisher";
             }
-            if (cbFilters.Text == "Binding")
+            if (cbSort.Text == "Binding")
             {
-                selectedFilter = "binding";
+                selectedSort = "binding";
             }
-            if (cbFilters.Text == "Number of Pages")
+            if (cbSort.Text == "Number of Pages")
             {
-                selectedFilter = "pagenumber";
+                selectedSort = "pagenumber";
             }
         }
         private void FixQuery()

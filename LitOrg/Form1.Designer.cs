@@ -52,11 +52,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnFilter = new System.Windows.Forms.Button();
+            this.btnSort = new System.Windows.Forms.Button();
             this.rbtnDsc = new System.Windows.Forms.RadioButton();
             this.rbtnAsc = new System.Windows.Forms.RadioButton();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbFilters = new System.Windows.Forms.ComboBox();
+            this.cbSort = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -297,27 +297,27 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.btnFilter);
+            this.panel4.Controls.Add(this.btnSort);
             this.panel4.Controls.Add(this.rbtnDsc);
             this.panel4.Controls.Add(this.rbtnAsc);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.cbFilters);
+            this.panel4.Controls.Add(this.cbSort);
             this.panel4.Location = new System.Drawing.Point(752, 105);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(217, 138);
             this.panel4.TabIndex = 3;
             // 
-            // btnFilter
+            // btnSort
             // 
-            this.btnFilter.Location = new System.Drawing.Point(65, 100);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(4);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(100, 28);
-            this.btnFilter.TabIndex = 4;
-            this.btnFilter.Text = "Filter";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
+            this.btnSort.Location = new System.Drawing.Point(65, 100);
+            this.btnSort.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(100, 28);
+            this.btnSort.TabIndex = 4;
+            this.btnSort.Text = "Sort";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
             // rbtnDsc
             // 
@@ -349,15 +349,15 @@
             this.label8.Location = new System.Drawing.Point(4, 12);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 17);
+            this.label8.Size = new System.Drawing.Size(53, 17);
             this.label8.TabIndex = 1;
-            this.label8.Text = "Filter by";
+            this.label8.Text = "Sort by";
             // 
-            // cbFilters
+            // cbSort
             // 
-            this.cbFilters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilters.FormattingEnabled = true;
-            this.cbFilters.Items.AddRange(new object[] {
+            this.cbSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSort.FormattingEnabled = true;
+            this.cbSort.Items.AddRange(new object[] {
             "Author",
             "Title",
             "ISBN",
@@ -365,11 +365,11 @@
             "Publisher",
             "Binding",
             "Number of Pages"});
-            this.cbFilters.Location = new System.Drawing.Point(4, 60);
-            this.cbFilters.Margin = new System.Windows.Forms.Padding(4);
-            this.cbFilters.Name = "cbFilters";
-            this.cbFilters.Size = new System.Drawing.Size(207, 24);
-            this.cbFilters.TabIndex = 0;
+            this.cbSort.Location = new System.Drawing.Point(4, 60);
+            this.cbSort.Margin = new System.Windows.Forms.Padding(4);
+            this.cbSort.Name = "cbSort";
+            this.cbSort.Size = new System.Drawing.Size(207, 24);
+            this.cbSort.TabIndex = 0;
             // 
             // Form1
             // 
@@ -423,11 +423,11 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button btnFilter;
+        private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.RadioButton rbtnDsc;
         private System.Windows.Forms.RadioButton rbtnAsc;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbFilters;
+        private System.Windows.Forms.ComboBox cbSort;
     }
 }
 
