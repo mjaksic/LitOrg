@@ -3,7 +3,6 @@ using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
 
-
 namespace LitOrg
 {
     public partial class Form1 : Form
@@ -23,7 +22,6 @@ namespace LitOrg
             cbSort.SelectedIndex = 0;
             selectedSort = cbSort.Text;
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
