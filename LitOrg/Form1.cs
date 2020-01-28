@@ -24,7 +24,7 @@ namespace LitOrg
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
         //SORT
         private void btnSort_Click(object sender, EventArgs e)
@@ -44,7 +44,14 @@ namespace LitOrg
             TrimAll();
             FieldIsEmpty();
             FixQuery();
-            DeleteData();
+            if(GetAllIsbnData() == true)
+            { 
+                DeleteData();
+            }
+            else
+            {
+                MessageBox.Show("ISBN s ovom oznakom ne postoji!");
+            }
         }
         //UPDATE
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -53,7 +60,14 @@ namespace LitOrg
             TrimAll();
             FieldIsEmpty();
             FixQuery();
-            UpdateData();
+            if (GetAllIsbnData() == true)
+            {
+                UpdateData();
+            }
+            else
+            {
+                MessageBox.Show("ISBN s ovom oznakom ne postoji!");
+            }
         }
         //FIND
         private void btnFind_Click(object sender, EventArgs e)
@@ -70,7 +84,14 @@ namespace LitOrg
             TrimAll();
             FixQuery();
             FieldIsEmpty();
-            AddData();
+            if (GetAllIsbnData() == false)
+            {
+                AddData();
+            }
+            else
+            {
+                MessageBox.Show("ISBN s ovom oznakom već postoji");
+            }
         }
         private void GetDataFromTextFields()
         {
@@ -119,6 +140,24 @@ namespace LitOrg
             _adapter.Fill(table);
             dataGridView.DataSource = table;
         }
+        private bool GetAllIsbnData()
+        {
+            int rowCount = dataGridView.Rows.Count;
+            bool match = false;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    if (isbn == dataGridView.Rows[i].Cells["Isbn"].Value.ToString())
+                    {
+                        match = true;
+                        break;
+                    }
+                }
+            if (match == false)
+            {
+                return false;
+            }
+            else return true;
+        }
         private void AddData()
         {
             if (isbn.Length != 13)
@@ -140,10 +179,13 @@ namespace LitOrg
             if (author.Length > 0)
             {
                 _adapter = new SqlCeDataAdapter("SELECT isbn AS ISBN, title AS Title, author AS Author, year AS Year, publisher AS Publisher, binding AS Binding, pagenumber AS \"Page number\" FROM books WHERE author='" + author + "'", _connection);
+                MessageBox.Show(_adapter.ToString());
+                /*
                 DataTable table = new DataTable();
                 _adapter.Fill(table);
                 dataGridView.DataSource = table;
                 RemoveDataFromTextFields();
+                */
             }
             else if (title.Length > 0)
             {
